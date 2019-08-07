@@ -7,6 +7,14 @@
   </div>
 </template>
 
+<script lang="ts">
+import { Vue, Component } from 'nuxt-property-decorator';
+
+export default class AppLogo extends Vue {
+  name: string = 'AppLogo';
+}
+</script>
+
 <style>
 .VueToNuxtLogo {
   display: inline-block;

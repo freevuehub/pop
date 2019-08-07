@@ -22,12 +22,21 @@
   </section>
 </template>
 
-<script>
-import AppLogo from '~/components/AppLogo.vue'
+<script lang="ts">
+import { Vue, Component } from 'nuxt-property-decorator';
+import { mapGetters } from 'vuex';
+import { test } from '~/API';
 
-export default {
+@Component({
   components: {
-    AppLogo
+    AppLogo: () => import('~/components/AppLogo.vue')
+  }
+})
+export default class App extends Vue {
+  name: string = 'App';
+
+  async mounted() {
+    await test(); 
   }
 }
 </script>
