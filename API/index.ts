@@ -1,8 +1,9 @@
 import Axios, { AxiosResponse, AxiosError } from 'axios';
+import endpoint from './end.point';
 
 export function test(): Promise<any> {
   return new Promise<any>(
-    (resolve, reject) => Axios.get('http://localhost:5000/freevue-27191/us-central1/helloWorld')
+    (resolve, reject) => Axios.get(`${endpoint.BASE_URL}/widgets`)
       .then((res: AxiosResponse) => resolve(res))
       .catch((e: AxiosError) => reject(e))
   )
