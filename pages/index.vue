@@ -36,7 +36,7 @@ export default class App extends Vue {
   name: string = 'App';
 
   async mounted() {
-    await test(); 
+    await this.$store.dispatch('test');
   }
 }
 </script>
