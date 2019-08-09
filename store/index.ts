@@ -15,15 +15,16 @@ export const mutations = {
 };
 
 export const getters = {
-  list: ({ list }) => list
+  [List.$Get.List]: ({ list }) => list
 };
 
 export const actions = {
   [List.$Call.List]: (store) =>  new Promise<any>(async (resolve, reject) => {
     try {
       const { data } = await getList();
+      const { items } = data;
 
-      console.log(data);
+      store.commit(List.$Set.List, items.list);
 
       return resolve(data);
     } catch(e) {
