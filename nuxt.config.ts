@@ -22,6 +22,9 @@ export default {
       { rel: 'apple-touch-icon', href: '/images/icons/icon-152x152.png' },
     ],
   },
+  css: [
+    'static/css/default.css'
+  ],
   modules: [
     '@nuxtjs/pwa',
   ],
