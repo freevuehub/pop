@@ -4,7 +4,9 @@
       <img src="images/icons/icon-384x384.png" alt="Logo">
     </div>
     <div v-for="l in list" :key="l.no">
-      {{ l.name.kr }}
+      <nuxt-link :to="`/Pop/${l.no}`">
+        {{ l.name.kr }}
+      </nuxt-link>
     </div>
   </section>
 </template>
