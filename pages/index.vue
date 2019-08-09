@@ -1,7 +1,7 @@
 <template>
   <section>
     <div :class="$style.logo">
-      <img src="/static/images/icons/icon-384x384.png" alt="Logo">
+      <img src="images/icons/icon-384x384.png" alt="Logo">
     </div>
   </section>
 </template>
@@ -9,7 +9,7 @@
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
 import { mapGetters } from 'vuex';
-import { test } from '~/API';
+import { List } from '~/store/Constant';
 
 @Component({
   components: {
@@ -20,7 +20,7 @@ export default class App extends Vue {
   name: string = 'App';
 
   async mounted() {
-    await this.$store.dispatch('test');
+    const { items } = await this.$store.dispatch(List.$Call.List);
   }
 }
 </script>
