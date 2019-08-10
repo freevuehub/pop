@@ -1,32 +1,52 @@
-importScripts('https://cdn.jsdelivr.net/npm/workbox-cdn@4.3.1/workbox/workbox-sw.js')
+const CACHE_NAME = 'freevue-cache-pop';
+const FILES_TO_CACHE = [
+  '/index.html',
+];
 
-// --------------------------------------------------
-// Configure
-// --------------------------------------------------
+self.addEventListener('install', (evt) => {
+  console.log('[ServiceWorker] Install');
 
-// Set workbox config
-workbox.setConfig({
-  "debug": false
-})
+  evt.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      console.log('[ServiceWorker] Pre-caching offline page');
+      return cache.addAll(FILES_TO_CACHE);
+    })
+  );
 
-// Start controlling any existing clients as soon as it activates
-workbox.core.clientsClaim()
+  self.skipWaiting();
+});
 
-// Skip over the SW waiting lifecycle stage
-workbox.core.skipWaiting()
+self.addEventListener('activate', (evt) => {
+  console.log('[ServiceWorker] Activate');
 
-workbox.precaching.cleanupOutdatedCaches()
+  evt.waitUntil(
+    caches.keys().then((keyList) => {
+      return Promise.all(keyList.map((key) => {
+        if (key !== CACHE_NAME) {
+          console.log('[ServiceWorker] Removing old cache', key);
+          return caches.delete(key);
+        }
+      }));
+    })
+  );
 
-// --------------------------------------------------
-// Precaches
-// --------------------------------------------------
+  self.clients.claim();
+});
 
-// Precache assets
+self.addEventListener('fetch', (evt) => {
+  console.log('[ServiceWorker] Fetch', evt.request.url);
 
-// --------------------------------------------------
-// Runtime Caching
-// --------------------------------------------------
-
-// Register route handlers for runtimeCaching
-workbox.routing.registerRoute(new RegExp('/_nuxt/'), new workbox.strategies.CacheFirst ({}), 'GET')
-workbox.routing.registerRoute(new RegExp('/'), new workbox.strategies.NetworkFirst ({}), 'GET')
+  if (evt.request.mode !== 'navigate') {
+    // Not a page navigation, bail.
+    return;
+  }
+  evt.respondWith(
+    fetch(evt.request)
+      .catch(() => {
+        return caches.open(CACHE_NAME)
+          .then((cache) => {
+            return cache.match('index.html');
+          });
+      })
+  );
+});

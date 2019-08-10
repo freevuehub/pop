@@ -52,13 +52,13 @@
   }
   .flexItem {
     transition: all .2s;
-    flex-basis: 33.333%;
+    flex-basis: 25%;
     padding: 10px;
   }
 
   @media screen and (max-width: 640px) {
     .flexItem {
-      flex-basis: 25%;
+      flex-basis: 33.333%;
     }
   }
 </style>

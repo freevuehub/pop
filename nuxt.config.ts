@@ -57,5 +57,15 @@ export default {
     display: 'standalone',
     background_color: '#E4E4E6',
     theme_color: '#72cc96'
-  }
+  },
+  workbox: {
+    offline: false,
+    runtimeCaching: [
+      {
+        urlPattern: "/*",
+        handler: "networkFirst",
+        method: "GET"
+      }
+    ]
+  },
 } as NuxtConfiguration;
