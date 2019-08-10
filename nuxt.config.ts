@@ -30,6 +30,12 @@ export default {
   ],
   loading: { color: '#72cc96' },
   build: {
+    babel: {
+      plugins: [
+        ["@babel/plugin-proposal-decorators", { legacy: true }],
+        ["@babel/plugin-proposal-class-properties", { loose: true }]
+      ]
+    },
     extend(config, ctx) {
       if (ctx.isDev && ctx.isClient) {
         if (!config.module) config.module = { rules: [] }
