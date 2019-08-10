@@ -1,7 +1,7 @@
 <template>
   <section>
-    <MainLogo />
-    <MainPopList />
+    <main-logo />
+    <main-pop-list />
   </section>
 </template>
 

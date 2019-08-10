@@ -6,13 +6,12 @@
       :class="$style.flexItem"
     >
       <nuxt-link :to="nuxtLink(l.no)">
-        <Card
+        <card
           :hover="true"
           :img="popLogoUrl(l.name.en)"
         >
           {{ l.name.kr }}
-          {{ l.name.en }}
-        </Card>
+        </card>
       </nuxt-link>
     </div>
   </div>
