@@ -6,7 +6,7 @@ export default {
     title: 'Freevue - POP',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, user-scalable=no, initial-scale=1.0' },
+      { name: 'viewport', content: 'width=device-width, user-scalable=no, initial-scale=1' },
       { name: 'theme-color', content: '#72cc96' },
       {
         hid: 'description',
