@@ -1,1 +1,1 @@
-export { default as MainPopList } from './PopList';
+export { default as MainPopList } from './PopList.vue';
