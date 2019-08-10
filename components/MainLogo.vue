@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.logo">
-    <img src="images/icons/icon-384x384.png" alt="Logo">
+    <img src="icons/icon-384x384.png" alt="Logo">
   </div>
 </template>
 

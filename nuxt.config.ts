@@ -19,7 +19,7 @@ export default {
     ],
     link: [
       { rel: 'icon', href: '/favicon.ico' },
-      { rel: 'apple-touch-icon', href: '/images/icons/icon-152x152.png' },
+      { rel: 'apple-touch-icon', href: '/icons/icon-152x152.png' },
     ],
   },
   css: [
