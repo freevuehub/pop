@@ -1,13 +1,12 @@
 import { getList } from '~/API';
-import { List } from './Constant';
-import { Dispatch } from 'vuex';
+import { MainConst } from './Constant';
 
 export const state = () => ({
   list: []
 });
 
 export const mutations = {
-  [List.$Set.List]: (state: { list }, payload: []) => {
+  [MainConst.$Set.List]: (state: { list }, payload: []) => {
     state.list = [
       ...payload
     ]
@@ -15,20 +14,20 @@ export const mutations = {
 };
 
 export const getters = {
-  [List.$Get.List]: ({ list }) => list
+  [MainConst.$Get.List]: ({ list }) => list
 };
 
 export const actions = {
-  [List.$Call.List]: (store) =>  new Promise<any>(async (resolve, reject) => {
+  [MainConst.$Call.List]: (store) =>  new Promise<any>(async (resolve, reject) => {
     try {
       const { data } = await getList();
       const { items } = data;
 
-      store.commit(List.$Set.List, items.list);
+      store.commit(MainConst.$Set.List, items.list);
 
       return resolve(data);
     } catch(e) {
-      console.error('===== List.$Call.List Error =====');
+      console.error('===== MainConst.$Call.List Error =====');
       
       return reject(e);
     }

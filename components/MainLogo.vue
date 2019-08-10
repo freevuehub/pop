@@ -8,9 +8,7 @@
   import { Vue, Component } from 'nuxt-property-decorator';
 
   @Component
-  export default class MainLogo extends Vue {
-    name: string = 'MainLogo';
-  }
+  export default class MainLogo extends Vue {}
 </script>
 
 <style module>

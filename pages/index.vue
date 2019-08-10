@@ -1,41 +1,30 @@
 <template>
   <section>
-    <MainLogo />  
-    <div v-for="l in list" :key="l.no">
-      <nuxt-link :to="`/Pop/${l.no}`">
-        {{ l.name.kr }}
-      </nuxt-link>
-    </div>
+    <MainLogo />
+    <MainPopList />
   </section>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
-import { mapGetters } from 'vuex';
-import { List } from '~/store/Constant';
-import { callbackify } from 'util';
-import { returnStatement } from '@babel/types';
+import { MainConst } from '~/store/Constant';
 import { MainLogo } from '~/components';
+import { MainPopList } from '~/containers';
 
 @Component({
-  components: { MainLogo },
-  computed: {
-    ...mapGetters({
-      list: List.$Get.List
-    })
-  }
+  components: {
+    MainLogo,
+    MainPopList
+  },
 })
 export default class App extends Vue {
   name: string = 'App';
   async created() {
     try {
-      await this.$store.dispatch(List.$Call.List);
+      await this.$store.dispatch(MainConst.$Call.List);
     } catch (e) {
       console.error(e);
     }
-  }
-  mounted() {
-    console.log(this);
   }
 }
 </script>

@@ -1,4 +1,4 @@
-export const List = {
+export const MainConst = {
   $Set: {
     List: 'SET/LIST/API/GET/LIST'
   },
