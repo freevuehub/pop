@@ -1,5 +1,13 @@
 <template>
-  <div :class="[$style.card, { [$style.hover]: hover }]">
+  <div
+    :class="[
+      $style.card,
+      {
+        [$style.hover]: hover,
+        [$style.row]: row
+      }
+    ]"
+  >
     <div :class="$style.imgBox">
       <img :src="img" alt="Pop Logo Image" v-if="!!img">
     </div>
@@ -18,12 +26,14 @@
   @Component({
     props: {
       img: String,
-      hover: Boolean
+      hover: Boolean,
+      row: Boolean
     }
   })
   export default class Card extends Vue {
-    @Prop() img!: string
-    @Prop() hover!: boolean
+    @Prop() img!: string;
+    @Prop() hover!: boolean;
+    @Prop() row!: boolean;
   }
 </script>
 
@@ -31,6 +41,10 @@
   .card {
     box-shadow: 0 2px 12px 0 #00000010;
     border-radius: 4px;
+  }
+  .row {
+    display: flex;
+    align-items: center;
   }
   .hover {
     transition: all .2s;
@@ -44,5 +58,11 @@
   }
   .comment {
     padding: 10px;
+  }
+  .row .imgBox {
+    flex-basis: 30%;
+  }
+  .row .comment {
+    flex-basis: 70%;
   }
 </style>

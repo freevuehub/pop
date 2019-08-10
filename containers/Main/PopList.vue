@@ -8,6 +8,7 @@
       <nuxt-link :to="nuxtLink(l.no)">
         <card
           :hover="true"
+          :row="true"
           :img="popLogoUrl(l.name.en)"
         >
           {{ l.name.kr }}
@@ -29,7 +30,7 @@
     },
     computed: {
       ...mapGetters({
-        popList: MainConst.$Get.List
+        popList: `main/${MainConst.$Get.List}`
       })
     }
   })

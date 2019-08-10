@@ -28,6 +28,9 @@ export default {
   modules: [
     '@nuxtjs/pwa',
   ],
+  plugins: [
+    '~/plugins/directives',
+  ],
   loading: { color: '#72cc96' },
   build: {
     babel: {
