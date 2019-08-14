@@ -1,4 +1,17 @@
-export const SystemConst = {
+interface ISystem {
+  $Set: {
+    Resize: string
+    BreakPoint: string
+  }
+  $Get: {
+    Window: string
+    BreakPoint: string
+  }
+  $Call: {
+  }
+}
+
+export const SystemConst: ISystem = {
   $Set: {
     Resize: 'SET/SYSTEM/WINDOW/RESIZE',
     BreakPoint: 'SET/SYSTEM/WINDOW/BREAKPOINT'
@@ -8,7 +21,6 @@ export const SystemConst = {
     BreakPoint: 'GET/SYSTEM/WINDOW/BREAKPOINT'
   },
   $Call: {
-    Resize: 'CALL/SYSTEM/WINDOW/RESIZE'
   }
 }
 

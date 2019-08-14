@@ -1,27 +1,25 @@
 <template>
-  <div :class="$style.flex">
-    <div
+  <v-layout>
+    <v-flex
       v-for="l in popList"
+      md3
+      xs4
       :key="l.no"
-      :class="$style.flexItem"
+      class="pa-3"
     >
-      <nuxt-link :to="nuxtLink(l.no)">
-        <card
-          :hover="true"
-          :row="true"
-          :img="popLogoUrl(l.name.en)"
-        >
-          {{ l.name.kr }}
-        </card>
-      </nuxt-link>
-    </div>
-  </div>
+    <nuxt-link :to="nuxtLink(l.no)">
+      <v-card>
+        {{ l.name.kr }}
+      </v-card>
+    </nuxt-link>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script lang="ts">
   import { Vue, Component } from 'nuxt-property-decorator';
   import { mapGetters } from 'vuex';
-  import { MainConst } from '~/store/Constant';
+  import { MainConst } from '~/Constant';
   import { Card } from '~/components';
 
   @Component({
@@ -30,7 +28,7 @@
     },
     computed: {
       ...mapGetters({
-        popList: `main/${MainConst.$Get.List}`
+        popList: MainConst.$Get.List
       })
     }
   })

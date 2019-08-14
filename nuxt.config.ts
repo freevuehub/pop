@@ -27,9 +27,10 @@ export default {
   ],
   modules: [
     '@nuxtjs/pwa',
+    '@nuxtjs/vuetify'
   ],
   plugins: [
-    '~/plugins/directives',
+    
   ],
   loading: { color: '#72cc96' },
   build: {
@@ -71,4 +72,9 @@ export default {
       }
     ]
   },
+  vuetify: {
+    theme: {
+      dark: true
+    }
+  }
 } as NuxtConfiguration;

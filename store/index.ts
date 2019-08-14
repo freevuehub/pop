@@ -1,92 +1,44 @@
-import { SystemConst } from './Constant';
+import { getList } from '~/API';
+import { MainConst } from '~/Constant';
 import { ActionTree, MutationTree } from 'vuex'
 
-interface ISystemState {
-  window: {
-    width: number
-    height: number
-  }
-  breakPoint: {
-    xs: boolean
-    sm: boolean
-    md: boolean
-    lg: boolean
-    xl: boolean
-  }
+interface IMainState {
+  list: string[]
 }
 
-interface ISystemModel {
-  window: {
-    width: number,
-    height: number
-  }
-  breakPoint: {
-    xs: boolean
-    sm: boolean
-    md: boolean
-    lg: boolean
-    xl: boolean
-  }
+interface IMainModel {
+  list: string[]
 }
 
-export const state = (): ISystemState => ({
-  window: {
-    width: window.innerWidth,
-    height: window.innerHeight
-  },
-  breakPoint: {
-    xs: window.innerWidth < 600,
-    sm: 600 <= window.innerWidth && window.innerWidth < 960,
-    md: 960 <= window.innerWidth && window.innerWidth < 1264,
-    lg: 1264 <= window.innerWidth && window.innerWidth < 1904,
-    xl: 1904 <= window.innerWidth
-  }
+export const state = (): IMainState => ({
+  list: []
 });
 
-export const mutations: MutationTree<ISystemState> = {
-  [SystemConst.$Set.Resize]: ({ window }, payload) => {
-    window = {
+export const mutations: MutationTree<IMainState> = {
+  [MainConst.$Set.List]: (state, payload) => {
+    state.list = [
       ...payload
-    }
-  },
-  [SystemConst.$Set.BreakPoint]: ({ breakPoint }, payload) => {
-    breakPoint = {
-      ...breakPoint,
-      ...payload
-    }
-  },
+    ]
+  }
 };
 
 export const getters = {
-  [SystemConst.$Get.Window]: ({ window }) => window,
+  [MainConst.$Get.List]: ({ list }) => list
 };
 
-export const actions: ActionTree<ISystemState, ISystemModel> = {
-  [SystemConst.$Call.Resize]: (store, model) => new Promise(resolve => {
-    store.commit(SystemConst.$Set.Resize, model);
+export const actions: ActionTree<IMainState, IMainModel> = {
+  [MainConst.$Call.List]: (store) => new Promise(async (resolve, reject) => {
+    try {
+      const { data } = await getList();
+      const { items } = data;
 
-    if (model.width < 600){
-      if (!store.state.breakPoint.xs) {
-        store.commit(SystemConst.$Set.BreakPoint, { xs: true });
-      }
-    } else if (600 <= model.width && model.width < 960){
-      if (!store.state.breakPoint.sm) {
-        store.commit(SystemConst.$Set.BreakPoint, { sm: true });
-      }
-    } else if (960 <= model.width && model.width < 1264){
-      if (!store.state.breakPoint.md) {
-        store.commit(SystemConst.$Set.BreakPoint, { md: true }); 
-      }
-    } else if (1264 <= model.width && model.width < 1904){
-      if (!store.state.breakPoint.lg) {
-        store.commit(SystemConst.$Set.BreakPoint, { lg: true }); 
-      }
-    } else if (1904 <= model.width){
-      if (!store.state.breakPoint.xl) {
-        store.commit(SystemConst.$Set.BreakPoint, { xl: true }); 
-      }
+      store.commit(MainConst.$Set.List, items.list);
+
+      return resolve(data);
+    } catch(e) {
+      console.error('===== MainConst.$Call.List Error =====');
+      
+      return reject(e);
     }
-    
-    return resolve();
   })
 };
