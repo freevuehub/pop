@@ -1,11 +1,12 @@
 <template>
-  <v-layout>
+  <v-layout row wrap class="pa-0 ma-0">
     <v-flex
       v-for="l in popList"
       md3
-      xs4
+      sm4
+      xs12
       :key="l.no"
-      class="pa-2"
+      class="px-sm-2 my-2"
     >
     <nuxt-link :to="nuxtLink(l.no)">
       <v-card
@@ -20,9 +21,9 @@
           <v-list-item-avatar
             tile
             size="80"
-            color="grey lighten-2"
+            color="grey lighten-3"
           >
-            <v-img :src="`./images/pop/${l.name.en}/logo.png`"></v-img>
+            <v-img :src="popLogoUrl(l.name.en)"></v-img>
           </v-list-item-avatar>
         </v-list-item>
       </v-card>
@@ -35,12 +36,8 @@
   import { Vue, Component } from 'nuxt-property-decorator';
   import { mapGetters } from 'vuex';
   import { MainConst } from '~/Constant';
-  import { Card } from '~/components';
 
   @Component({
-    components: {
-      Card
-    },
     computed: {
       ...mapGetters({
         popList: MainConst.$Get.List

@@ -1,14 +1,23 @@
 <template>
-  <v-layout>
-    <v-flex>
-      <v-avatar
-        color="grey lighten-3"
-        size="256"
-      >
-        <img src="icons/icon-384x384.png" alt="Logo">
-      </v-avatar>
-    </v-flex>
-  </v-layout>
+<v-card
+    class="mx-auto"
+    max-width="434"
+    outlined
+  >
+    <v-avatar
+      class="profile"
+      color="grey lighten-3"
+      size="164"
+    >
+      <v-img src="icons/icon-384x384.png"></v-img>
+    </v-avatar>
+    <v-list-item>
+      <v-list-item-content>
+        <v-list-item-title class="title">Freevue Poject!</v-list-item-title>
+        <v-list-item-subtitle>Rotate Pop List</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+  </v-card>
 </template>
 
 <script lang="ts">

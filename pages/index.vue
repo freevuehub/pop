@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container>
     <main-logo class="my-3" />
     <main-pop-list />
   </v-container>
@@ -25,9 +25,6 @@ export default class App extends Vue {
     } catch (e) {
       console.error(e);
     }
-  }
-  mounted() {
-    console.log(this);
   }
 }
 </script>

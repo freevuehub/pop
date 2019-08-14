@@ -20,6 +20,7 @@ export default {
     link: [
       { rel: 'icon', href: '/favicon.ico' },
       { rel: 'apple-touch-icon', href: '/icons/icon-152x152.png' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Material+Icons' },
     ],
   },
   css: [
@@ -73,6 +74,9 @@ export default {
     ]
   },
   vuetify: {
+    icons: {
+      iconfont: 'md', // 'mdi' || 'mdiSvg' || 'md' || 'fa' || 'fa4'
+    },
     theme: {
       dark: true
     }
