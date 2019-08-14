@@ -5,11 +5,26 @@
       md3
       xs4
       :key="l.no"
-      class="pa-3"
+      class="pa-2"
     >
     <nuxt-link :to="nuxtLink(l.no)">
-      <v-card>
-        {{ l.name.kr }}
+      <v-card
+        mx-auto
+        outlined
+      >
+        <v-list-item three-line>
+          <v-list-item-content>
+            <v-list-item-title class="headline mb-1">{{ l.name.kr }}</v-list-item-title>
+            <v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
+          </v-list-item-content>
+          <v-list-item-avatar
+            tile
+            size="80"
+            color="grey lighten-2"
+          >
+            <v-img :src="`./images/pop/${l.name.en}/logo.png`"></v-img>
+          </v-list-item-avatar>
+        </v-list-item>
       </v-card>
     </nuxt-link>
     </v-flex>

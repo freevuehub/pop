@@ -1,8 +1,8 @@
 <template>
-  <section>
-    <main-logo />
+  <v-container fluid>
+    <main-logo class="my-3" />
     <main-pop-list />
-  </section>
+  </v-container>
 </template>
 
 <script lang="ts">

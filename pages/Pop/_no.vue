@@ -7,13 +7,8 @@
 
 <script lang="ts">
   import { Vue, Component } from 'nuxt-property-decorator';
-  import { AppBar } from '~/components';
 
-  @Component({
-    components: {
-      AppBar
-    }
-  })
+  @Component
   export default class PopId extends Vue {
     
   }

@@ -1,7 +1,14 @@
 <template>
-  <div :class="$style.logo">
-    <img src="icons/icon-384x384.png" alt="Logo">
-  </div>
+  <v-layout>
+    <v-flex>
+      <v-avatar
+        color="grey lighten-3"
+        size="256"
+      >
+        <img src="icons/icon-384x384.png" alt="Logo">
+      </v-avatar>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script lang="ts">
