@@ -13,7 +13,7 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "@nuxtjs/pwa": "^3.0.0-beta.16",
+    "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/vuetify": "^1.2.1",
     "axios": "^0.21.2",
     "nuxt": "^2.0.0"
